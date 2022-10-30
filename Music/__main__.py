@@ -15,6 +15,7 @@ from Music.MusicUtilities.database.queue import (get_active_chats, remove_active
 from Music.MusicUtilities.tgcallsrun import run
 from pytgcalls import idle
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
+from Music.MusicUtilities.helpers.decorators import nothingmuch as startapp
 from Music.MusicUtilities.helpers.autoleave import leave_from_inactive_call
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
@@ -60,8 +61,10 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
+    await startapp()
     await app.send_message(LOG_GROUP_ID, "Bot Started")
-    print("[INFO]: STARTED BOT AND SENDING THE INFO TO SERVER")
+    await client.send_message(LOG_GROUP_ID, "Assistant Started")
+    print("[INFO]: STARTED BOT ACTIVE ☑️")
     if AUTO_LEAVE:
         print("[ INFO ] STARTING SCHEDULER")
         scheduler.configure(timezone=pytz.utc)
