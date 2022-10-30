@@ -12,7 +12,6 @@ from Music.config import API_ID, API_HASH, BOT_TOKEN, MONGO_DB_URI, SUDO_USERS, 
 from Music import BOT_NAME, ASSNAME, app, client
 from Music.MusicUtilities.database.functions import clean_restart_stage
 from Music.MusicUtilities.database.queue import (get_active_chats, remove_active_chat)
-from Music.MusicUtilities.helpers.decorators import nothingmuch
 from Music.MusicUtilities.tgcallsrun import run
 from pytgcalls import idle
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
@@ -61,7 +60,6 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
-    await client.nothingmuch()
     await app.send_message(LOG_GROUP_ID, "Bot Started")
     print("[INFO]: STARTED BOT AND SENDING THE INFO TO SERVER")
     if AUTO_LEAVE:
