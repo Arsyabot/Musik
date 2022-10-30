@@ -60,6 +60,7 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
+    await decorators.nothingmuch()
     await app.send_message(LOG_GROUP_ID, "Bot Started")
     print("[INFO]: STARTED BOT AND SENDING THE INFO TO SERVER")
     if AUTO_LEAVE:
