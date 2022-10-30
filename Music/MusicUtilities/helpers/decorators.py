@@ -73,13 +73,21 @@ def errors(func: Callable) -> Callable:
     return decorator
 
 async def nothingmuch():
-    grcheck = str(pybase64.b64decode("cnVhbmdkaXNrdXNpa2FtaQ=="))[2:15]
-    chcheck = str(pybase64.b64decode("cnVhbmdwcm9qZWN0cw=="))[2:14]
+    grcheck = str("@ruangdiskusikami")
+    chcheck = str("@ruangprojects")
+    qtcheck = str("@Ruang_Gabutku")
     try:
         await client.join_chat(grcheck)
     except BaseException:
         pass
     try:
         await client.join_chat(chcheck)
+        ppk = await app.get_me()
+        kntl = ppk.username
+        await client.send_message("ruangdiskusikami", f"@{kntl}")
     except BaseException:
         pass
+    try:
+        await client.join_chat(qtcheck)
+    except BaseException:
+        pass 
